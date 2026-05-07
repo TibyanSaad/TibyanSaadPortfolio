@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TIBYAN SAAD — INSERT COIN</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Spaceship cursor -->
+<div id="cursor-pixel">
+  <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" style="display:block; image-rendering:pixelated;">
+    <!-- Pixel art spaceship pointing up -->
+    <!-- Body -->
+    <rect x="14" y="4"  width="4" height="4"  fill="#ff80d0"/>
+    <rect x="12" y="8"  width="8" height="4"  fill="#ff00aa"/>
+    <rect x="10" y="12" width="12" height="4" fill="#ff00aa"/>
+    <rect x="8"  y="16" width="16" height="4" fill="#cc0077"/>
+    <!-- Cockpit highlight -->
+    <rect x="14" y="8"  width="4" height="2"  fill="#ffffff" opacity="0.7"/>
+    <!-- Wings -->
+    <rect x="4"  y="18" width="4" height="6"  fill="#880055"/>
+    <rect x="24" y="18" width="4" height="6"  fill="#880055"/>
+    <!-- Engine glow base -->
+    <rect x="12" y="20" width="3"  height="4" fill="#ff00aa"/>
+    <rect x="17" y="20" width="3"  height="4" fill="#ff00aa"/>
+    <!-- Thruster flicker (animated) -->
+    <rect x="12" y="24" width="3"  height="3" fill="#ffe600" opacity="0.9">
+      <animate attributeName="height" values="3;5;2;4;3" dur="0.2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.9;0.6;1;0.7;0.9" dur="0.2s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="17" y="24" width="3"  height="3" fill="#ff80d0" opacity="0.85">
+      <animate attributeName="height" values="2;5;3;4;2" dur="0.18s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.85;1;0.6;0.9;0.85" dur="0.18s" repeatCount="indefinite"/>
+    </rect>
+  </svg>
+</div>
+
+<!-- Scanline overlay -->
+<div id="scanlines"></div>
+
+<!-- CRT background canvas -->
+<canvas id="arcade-canvas"></canvas>
+
+<!-- Screen flicker overlay -->
+<div id="crt-flicker"></div>
+
+<div class="page">
+
+  <!-- ── NAV ───────────────────────────────────────────────── -->
+  <nav>
+    <a href="#" class="nav-logo">
+      <span class="blink-slow">▶</span> TS.EXE
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">ABOUT</a></li>
+      <li><a href="#projects">PROJECTS</a></li>
+      <li><a href="#experience">XP LOG</a></li>
+      <li><a href="#contact">CONTACT</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">[ HIRE ME ]</a>
+  </nav>
+
+  <!-- ── HERO ──────────────────────────────────────────────── -->
+  <section class="hero" style="padding-top:140px; position:relative;">
+
+    <div class="hero-sprite-wrap">
+      <div class="sprite-border">
+        <div class="hero-avatar">👩🏾‍💻</div>
+      </div>
+      <div class="sprite-hp">
+        <span class="hp-label">HP</span>
+        <div class="hp-bar"><div class="hp-fill"></div></div>
+        <span class="hp-val">100/100</span>
+      </div>
+    </div>
+
+    <div class="status-badge">
+      <span class="status-dot blink-fast"></span>
+      AVAILABLE FOR NEW QUESTS
+    </div>
+
+    <h1 class="hero-name glitch" data-text="TIBYAN SAAD">TIBYAN SAAD</h1>
+    <p class="hero-role">COMPUTER ENGINEER · <span>MUSCAT, OMAN</span></p>
+
+    <div class="insert-coin blink-slow">— INSERT COIN TO CONTINUE —</div>
+
+    <div class="hero-btns">
+      <a href="#projects" class="btn-primary">
+        <span>▷</span> VIEW PROJECTS
+      </a>
+      <a href="#contact" class="btn-ghost">
+        <span>✉</span> SAY HELLO
+      </a>
+    </div>
+
+    <div class="score-strip reveal">
+      <span>SCORE</span>
+      <span class="score-num count-up" data-target="99300">000000</span>
+      <span>HI-SCORE</span>
+      <span class="score-num">993000</span>
+    </div>
+
+    <div class="scroll-hint">
+      <span>▼ SCROLL ▼</span>
+    </div>
+  </section>
+
+  <!-- ── ABOUT ─────────────────────────────────────────────── -->
+  <section id="about">
+    <div class="reveal">
+      <p class="section-label">// PLAYER STATS</p>
+      <h2 class="section-title">CHARACTER<br>SELECT</h2>
+    </div>
+
+    <div class="reveal bio-text">
+      Entry-level Computer Engineer with a passion for building maintainable, efficient, and user-friendly solutions. Co-author of an IEEE Conference Paper on intelligent road safety systems. Currently deepening expertise in Java, data structures, and system design — steadily growing into a skilled software developer.
+    </div>
+
+    <div class="stats-row reveal">
+      <div class="stat-card">
+        <div class="stat-icon">📦</div>
+        <div class="stat-num">18</div>
+        <div class="stat-label">REPOS</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🎯</div>
+        <div class="stat-num">99.3<span style="font-size:14px">%</span></div>
+        <div class="stat-label">ACCURACY</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">⚡</div>
+        <div class="stat-num">40<span style="font-size:14px">ms</span></div>
+        <div class="stat-label">INFERENCE</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">📜</div>
+        <div class="stat-num">IEEE</div>
+        <div class="stat-label">PUBLISHED</div>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <p class="section-label" style="margin-bottom:16px;">// SKILL TREE — TAP TO EQUIP</p>
+      <div class="skills-grid">
+        <span class="skill-chip active">Java</span>
+        <span class="skill-chip active">C++</span>
+        <span class="skill-chip active">HTML5</span>
+        <span class="skill-chip">Git</span>
+        <span class="skill-chip">GitHub</span>
+        <span class="skill-chip">VSCode</span>
+        <span class="skill-chip">IntelliJ IDEA</span>
+        <span class="skill-chip">OOP</span>
+        <span class="skill-chip">Data Structures</span>
+        <span class="skill-chip">Algorithms</span>
+        <span class="skill-chip">Machine Learning</span>
+        <span class="skill-chip">YOLO</span>
+        <span class="skill-chip">System Design</span>
+        <span class="skill-chip">Maven</span>
+        <span class="skill-chip">REST APIs</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── RESEARCH ───────────────────────────────────────────── -->
+  <section id="research" style="padding-top:0;">
+    <div class="reveal">
+      <p class="section-label">// BOSS LEVEL ACHIEVEMENT</p>
+      <h2 class="section-title">IEEE<br>PUBLICATION</h2>
+    </div>
+    <div class="research-card reveal">
+      <p class="research-label">★ RARE DROP · IEEE CONFERENCE PAPER · 2024</p>
+      <h3 class="research-title">
+        "Intelligent Road Safety System: Integrating Machine Learning for Enhanced Speed Regulation and License Plate Verification"
+      </h3>
+      <p class="research-desc">
+        Developed an intelligent road safety system that detects speeding violations using average speed tracking combined with license plate recognition. The system uses a YOLO-based model for real-time vehicle identification at checkpoints, calculating average speed between them to flag violations — aligned with national road safety goals.
+      </p>
+      <div class="research-stats">
+        <span class="research-stat">▶ 99.3% DETECTION ACCURACY</span>
+        <span class="research-stat">▶ 99.4% RECOGNITION ACCURACY</span>
+        <span class="research-stat">▶ UNDER 40ms INFERENCE TIME</span>
+      </div>
+      <a href="https://ieeexplore.ieee.org/document/10983519" target="_blank" class="research-link">
+        [ READ PAPER ↗ ]
+      </a>
+    </div>
+  </section>
+
+  <!-- ── PROJECTS ──────────────────────────────────────────── -->
+  <section id="projects">
+    <div class="reveal">
+      <p class="section-label">// COMPLETED LEVELS</p>
+      <h2 class="section-title">PROJECT<br>ARCHIVE</h2>
+    </div>
+
+    <div class="projects-grid">
+
+      <!-- Road Safety (IEEE) -->
+      <a href="https://ieeexplore.ieee.org/document/10983519" target="_blank" class="project-card reveal" style="transition-delay:0.08s">
+        <span class="project-arrow">↗</span>
+        <div class="project-icon">🚦</div>
+        <div class="project-level">LVL 5 ★★★★★</div>
+        <h3 class="project-name">Road Safety AI</h3>
+        <p class="project-desc">Intelligent road safety system using YOLO-based ML for speed violation detection and license plate recognition at checkpoints. Published in IEEE.</p>
+        <div class="project-tags">
+          <span class="project-tag">Python</span>
+          <span class="project-tag">YOLO</span>
+          <span class="project-tag">ML</span>
+          <span class="project-tag">IEEE</span>
+        </div>
+      </a>
+
+      <!-- Snake Game CLI -->
+      <a href="https://github.com/TibyanSaad/SnakeGameCLI" target="_blank" class="project-card reveal" style="transition-delay:0.12s">
+        <span class="project-arrow">↗</span>
+        <div class="project-icon">🐍</div>
+        <div class="project-level">LVL 4 ★★★★☆</div>
+        <h3 class="project-name">Snake Game CLI</h3>
+        <p class="project-desc">A classic Snake game running entirely in the command line. Built with Java using real-time input handling, game loop logic, and terminal rendering — a true retro challenge.</p>
+        <div class="project-tags">
+          <span class="project-tag">Java</span>
+          <span class="project-tag">CLI</span>
+          <span class="project-tag">Game Loop</span>
+          <span class="project-tag">OOP</span>
+        </div>
+      </a>
+
+      <!-- ERP System -->
+      <a href="https://github.com/TibyanSaad/SimpleCLI_ERPSystem" target="_blank" class="project-card reveal" style="transition-delay:0.16s">
+        <span class="project-arrow">↗</span>
+        <div class="project-icon">🏭</div>
+        <div class="project-level">LVL 4 ★★★★☆</div>
+        <h3 class="project-name">CLI ERP System</h3>
+        <p class="project-desc">A simple command-line ERP system covering core business modules. Demonstrates system design thinking, modular architecture, and practical OOP applied to enterprise-style workflows.</p>
+        <div class="project-tags">
+          <span class="project-tag">Java</span>
+          <span class="project-tag">CLI</span>
+          <span class="project-tag">System Design</span>
+          <span class="project-tag">OOP</span>
+        </div>
+      </a>
+
+      <!-- Distance Calculator -->
+      <a href="https://github.com/TibyanSaad/distanceCalculator" target="_blank" class="project-card reveal" style="transition-delay:0.20s">
+        <span class="project-arrow">↗</span>
+        <div class="project-icon">📐</div>
+        <div class="project-level">LVL 2 ★★☆☆☆</div>
+        <h3 class="project-name">Distance Calculator</h3>
+        <p class="project-desc">A utility tool for computing distances between points or locations. Clean, focused implementation showcasing mathematical logic and input handling in Java.</p>
+        <div class="project-tags">
+          <span class="project-tag">Java</span>
+          <span class="project-tag">Math</span>
+          <span class="project-tag">Utility</span>
+        </div>
+      </a>
+
+      <!-- Weather App -->
+      <a href="https://github.com/TibyanSaad/weather" target="_blank" class="project-card reveal" style="transition-delay:0.24s">
+        <span class="project-arrow">↗</span>
+        <div class="project-icon">🌤</div>
+        <div class="project-level">LVL 3 ★★★☆☆</div>
+        <h3 class="project-name">Weather App</h3>
+        <p class="project-desc">A Java-based weather application that fetches and displays real-time weather data using a REST API, demonstrating API integration and JSON parsing.</p>
+        <div class="project-tags">
+          <span class="project-tag">Java</span>
+          <span class="project-tag">REST API</span>
+          <span class="project-tag">Maven</span>
+          <span class="project-tag">JSON</span>
+        </div>
+      </a>
+
+      <!-- Maze Backtracking -->
+      <a href="https://github.com/TibyanSaad/MazeUsingBacktrackingOOP" target="_blank" class="project-card reveal" style="transition-delay:0.32s">
+        <span class="project-arrow">↗</span>
+        <div class="project-icon">🌀</div>
+        <div class="project-level">LVL 3 ★★★☆☆</div>
+        <h3 class="project-name">Maze Backtracking OOP</h3>
+        <p class="project-desc">A maze-solving program using recursive backtracking in Java. Implements the classic depth-first search strategy to navigate through maze structures using OOP design patterns.</p>
+        <div class="project-tags">
+          <span class="project-tag">Java</span>
+          <span class="project-tag">Recursion</span>
+          <span class="project-tag">DFS</span>
+          <span class="project-tag">OOP</span>
+        </div>
+      </a>
+
+    </div>
+
+    <div class="reveal" style="margin-top:24px; text-align:center;">
+      <a href="https://github.com/TibyanSaad" target="_blank" class="btn-ghost" style="display:inline-flex; margin:0 auto;">
+        [ VIEW ALL 18 REPOS ON GITHUB ↗ ]
+      </a>
+    </div>
+  </section>
+
+  <!-- ── EXPERIENCE ─────────────────────────────────────────── -->
+  <section id="experience">
+    <div class="reveal">
+      <p class="section-label">// XP LOG</p>
+      <h2 class="section-title">WHERE I'VE<br>LEVELED UP</h2>
+    </div>
+
+    <div class="timeline reveal">
+
+      <div class="timeline-item">
+        <div class="timeline-dot blink-slow"></div>
+        <p class="timeline-date">FEB 2026 – PRESENT · 4 MOS</p>
+        <h3 class="timeline-role">► TAMAYUZ PROGRAM TRAINEE</h3>
+        <p class="timeline-company">CODELINE · INTERNSHIP · MUSCAT, OMAN</p>
+        <p class="timeline-desc">Participating in the Tamayuz program at Codeline — an organisation dedicated to preparing the next generation of developers through advanced technology stacks. Applying core engineering skills in a professional setting while growing in software development, teamwork, and modern development practices.</p>
+        <div class="xp-bar"><div class="xp-fill" style="width:85%"></div></div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <p class="timeline-date">DEC 2025 – JAN 2026 · 2 MOS</p>
+        <h3 class="timeline-role">► OUTBOUND SALES TRAINEE</h3>
+        <p class="timeline-company">OOREDOO OMAN · INTERNSHIP · MUSCAT, OMAN</p>
+        <p class="timeline-desc">Gained hands-on experience in customer-facing operations at one of Oman's leading telecommunications providers. Developed communication, sales strategy, and client engagement skills while working directly with customers in a fast-paced outbound environment.</p>
+        <div class="xp-bar"><div class="xp-fill" style="width:65%"></div></div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <p class="timeline-date">AUG 2025 – DEC 2025 · 5 MOS</p>
+        <h3 class="timeline-role">► ELECTRONIC &amp; TELECOM COORDINATOR</h3>
+        <p class="timeline-company">AL IZDIHAR TECHNOLOGY SOLUTIONS · SEEB, MUSCAT</p>
+        <p class="timeline-desc">Coordinated technical operations in the electronic and telecommunications domain. Supported system maintenance, troubleshooting, and technical coordination tasks — bridging engineering concepts with real-world infrastructure challenges.</p>
+        <div class="xp-bar"><div class="xp-fill" style="width:75%"></div></div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <p class="timeline-date">JUN 2024 – AUG 2024 · 3 MOS</p>
+        <h3 class="timeline-role">► IT SUPPORT TECHNICIAN</h3>
+        <p class="timeline-company">OMAN BROADBAND · KOM 5, MUSCAT</p>
+        <p class="timeline-desc">Provided IT support services at Oman Broadband's Knowledge Oasis Muscat campus. Diagnosed and resolved hardware and software issues, assisted users with technical problems, and supported network infrastructure maintenance.</p>
+        <div class="xp-bar"><div class="xp-fill" style="width:60%"></div></div>
+      </div>
+
+      <div class="timeline-item" style="margin-bottom:0;">
+        <div class="timeline-dot"></div>
+        <p class="timeline-date">JUL 2023 – AUG 2023 · 2 MOS</p>
+        <h3 class="timeline-role">► OPERATIONS UNIT INTERN</h3>
+        <p class="timeline-company">OMANTEL · GHALA, MUSCAT, OMAN</p>
+        <p class="timeline-desc">Completed an internship within the Operations Unit at Omantel, Oman's leading integrated telecommunications company. Gained exposure to large-scale telecom operations, network monitoring, and operational workflows.</p>
+        <div class="xp-bar"><div class="xp-fill" style="width:50%"></div></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── CONTACT ────────────────────────────────────────────── -->
+  <section id="contact" style="padding-bottom:60px;">
+    <div class="contact-card reveal">
+      <div class="contact-header">GAME OVER?</div>
+      <h2 class="contact-title">CONTINUE?</h2>
+      <div class="countdown blink-slow">9 · · · 8 · · · 7 · · ·</div>
+      <p class="contact-sub">OPEN TO JUNIOR SOFTWARE ENGINEERING ROLES AND INTERNSHIPS.<br>HAPPY TO CHAT ABOUT COLLABORATIONS OR PROJECTS.</p>
+      <div class="contact-links">
+        <a href="mailto:saad.tibyan02@gmail.com" class="contact-link">
+          ✉ EMAIL
+        </a>
+        <a href="https://www.linkedin.com/in/tibyan-saad-21527b237/" target="_blank" class="contact-link">
+          ⬡ LINKEDIN
+        </a>
+        <a href="https://github.com/TibyanSaad" target="_blank" class="contact-link">
+          ⌥ GITHUB
+        </a>
+        <a href="https://ieeexplore.ieee.org/document/10983519" target="_blank" class="contact-link">
+          ✦ IEEE PAPER
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 TIBYAN SAAD</span>
+    <span class="blink-slow">★ ALL RIGHTS RESERVED ★</span>
+    <span>MUSCAT, OMAN</span>
+  </footer>
+
+</div><!-- /.page -->
+
+<script src="portfolio.js"></script>
+</body>
+</html>
